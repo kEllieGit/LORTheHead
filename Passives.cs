@@ -362,9 +362,9 @@ namespace TheHead
     }
 
     /// <summary>
-    /// "Fairy Infused Blade" passive
+    /// "Infused Blade" passive
     /// </summary>
-    public class PassiveAbility_Fairy : PassiveAbilityBase
+    public class PassiveAbility_InfusedBlade : PassiveAbilityBase
     {
         public override void OnSucceedAttack(BattleDiceBehavior behavior)
         {
