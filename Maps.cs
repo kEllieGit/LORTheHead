@@ -17,11 +17,6 @@ namespace TheHead
             {
                 friendly.SetKnockoutInsteadOfDeath(true);
             }
-
-            foreach (BattleUnitModel enemy in BattleObjectManager.instance.GetAliveList(Faction.Enemy))
-            {
-                enemy.SetKnockoutInsteadOfDeath(true);
-            }
         }
 
         public override void OnRoundStart()
@@ -42,7 +37,7 @@ namespace TheHead
         public void EndBattle()
         {
             StorySerializer.LoadEffectFile(1000, 5, 4);
-            SingletonBehavior<BattleManagerUI>.Instance.ui_battleStory.OpenStory(delegate
+            BattleManagerUI.Instance.ui_battleStory.OpenStory(delegate
             {
                 EndingStory(End);
             }, false, true);
@@ -53,7 +48,7 @@ namespace TheHead
             GameObject gameObject = Util.LoadPrefab("Battle/FinalEpisode/FinalEpisode_FinalEnd");
             FinalEpisode_FinalEnd component = gameObject.GetOrAddComponent<FinalEpisode_FinalEnd>();
             component.Init(callback, new EnemyTeamStageManager_FinalFinal());
-            SingletonBehavior<BattleDirectingManager>.Instance.Add(gameObject);
+            BattleDirectingManager.Instance.Add(gameObject);
             return component;
         }
 
@@ -103,7 +98,7 @@ namespace TheHead
             return BattleObjectManager.instance.GetAliveList(Faction.Player).Count == 0;
         }
 
-        private StageController _controller => Singleton<StageController>.Instance;
+        private StageController _controller => StageController.Instance;
         private CustomMapHandler _cmu = CustomMapHandler.GetCMU(Parameters.PackageId);
     }
 

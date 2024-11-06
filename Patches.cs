@@ -23,12 +23,12 @@ namespace TheHead
         private static void StartCustomBattle(bool showStory = true)
         {
             // Replace Binah with non-degraded version
-            Singleton<BookXmlList>.Instance.GetData(8).EquipEffect = Singleton<BookXmlList>.Instance.GetData(new LorId(Parameters.PackageId, 10000550), true).EquipEffect;
-            Singleton<DeckXmlList>.Instance.GetData(8)._cardIdList = Singleton<DeckXmlList>.Instance.GetData(new LorId(Parameters.PackageId, 379330000))._cardIdList;
-            Singleton<DeckXmlList>.Instance.GetData(8).cardIdList = Singleton<DeckXmlList>.Instance.GetData(new LorId(Parameters.PackageId, 379330000)).cardIdList;
+            BookXmlList.Instance.GetData(8).EquipEffect = BookXmlList.Instance.GetData(new LorId(Parameters.PackageId, 10000550), true).EquipEffect;
+            DeckXmlList.Instance.GetData(8)._cardIdList = DeckXmlList.Instance.GetData(new LorId(Parameters.PackageId, 379330000))._cardIdList;
+            DeckXmlList.Instance.GetData(8).cardIdList = DeckXmlList.Instance.GetData(new LorId(Parameters.PackageId, 379330000)).cardIdList;
 
             UI.UIController.Instance.CallUIPhase(UIPhase.Sephirah);
-            UI.UIController.Instance.PrepareBattleEndContents(Singleton<StageClassInfoList>.Instance.GetData(new LorId(Parameters.PackageId, 379390001)), showStory, false, true);
+            UI.UIController.Instance.PrepareBattleEndContents(StageClassInfoList.Instance.GetData(new LorId(Parameters.PackageId, 379390001)), showStory, false, true);
         }
     }
 }
